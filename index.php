@@ -20,7 +20,9 @@ echo $base->countPrice(5, 60) + $base->addService($service) . '<br>';
 //echo $base->countPrice(5, -60) + $base->addService($service) . '<br>';
 
 $hourly = new TariffHourly();
+$service = new Service(70, false);
 echo $hourly->countPrice(5, 70) + $base->addService($service) . '<br>';
 
 $student = new TariffStudent();
+$service = new Service(60, false);
 echo $student->countPrice(5, 60) + $base->addService($service) . '<br>';

@@ -7,37 +7,13 @@ abstract class AbstractTariff implements TariffInterface
     const ERR_NEGATIVE = 'Введите число больше 0';
 
     private float $pricePerKm;
-    private float $pricePerMinute;
     private int $kilometers;
     private int $minutes;
 
-    abstract protected function countMinutes(int $minutes);
-
-    public function __construct($pricePerKm, $pricePerMinute)
+    public function __construct($pricePerKm)
     {
         $this->pricePerKm = $pricePerKm;
-        $this->pricePerMinute = $pricePerMinute;
     }
-
-//    public function getPricePerKm()
-//    {
-//        return $this->pricePerKm;
-//    }
-//
-//    public function setPricePerKm($price)
-//    {
-//        $this->pricePerKm = $price;
-//    }
-//
-//    public function getPricePerMinute()
-//    {
-//        return $this->pricePerMinute;
-//    }
-//
-//    public function setPricePerMinute($price)
-//    {
-//        $this->pricePerMinute = $price;
-//    }
 
     public function countPrice(int $kilometers, int $minutes)
     {
@@ -47,8 +23,15 @@ abstract class AbstractTariff implements TariffInterface
         }
         $this->kilometers = $kilometers;
         $this->minutes = $minutes;
-        return $this->pricePerKm * $kilometers + $this->pricePerMinute * $this->countMinutes($minutes);
+        return $this->countKmPrice($kilometers) + $this->countMinutePrice($minutes);
     }
+
+    protected function countKmPrice(int $kilometers)
+    {
+        return $this->pricePerKm * $kilometers;
+    }
+
+    abstract protected function countMinutePrice(int $minutes);
 
     public function addService(ServiceInterface $service)
     {
