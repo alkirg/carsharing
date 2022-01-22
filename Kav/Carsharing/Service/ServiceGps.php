@@ -3,11 +3,10 @@ namespace Kav\Carsharing\Service;
 
 class ServiceGps implements ServiceInterface
 {
-    private float $price = 15;
     const ERR_NEGATIVE = 'Введите число больше 0';
 
+    private float $price = 15;
     private int $minutes;
-    private bool $driver;
 
     public function __construct(int $minutes)
     {
