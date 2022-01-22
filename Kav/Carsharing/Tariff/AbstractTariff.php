@@ -5,8 +5,6 @@ abstract class AbstractTariff implements TariffInterface
 {
     const ERR_NEGATIVE = 'Введите число больше 0';
 
-    private float $pricePerKm;
-    private float $pricePerMinute;
     private int $kilometers;
     private int $minutes;
 
