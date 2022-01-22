@@ -3,7 +3,7 @@ namespace Kav\Carsharing\Service;
 
 class ServiceGps implements ServiceInterface
 {
-    const PRICE = 15;
+    private float $price = 15;
     const ERR_NEGATIVE = 'Введите число больше 0';
 
     private int $minutes;
@@ -20,6 +20,6 @@ class ServiceGps implements ServiceInterface
 
     public function countPrice()
     {
-        return self::PRICE * ceil($this->minutes / 60);
+        return $this->price * ceil($this->minutes / 60);
     }
 }

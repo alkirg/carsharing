@@ -3,16 +3,16 @@ namespace Kav\Carsharing\Tariff;
 
 class TariffHourly extends AbstractTariff
 {
-    const PRICE_PER_KM = 0;
-    const PRICE_PER_HOUR = 200;
+    private float $pricePerKm = 0;
+    private float $pricePerHour = 200;
 
     protected function countMinutePrice(int $minutes)
     {
-        return self::PRICE_PER_HOUR * ceil($minutes / 60);
+        return $this->pricePerHour * ceil($minutes / 60);
     }
 
     public function __construct()
     {
-        parent::__construct(self::PRICE_PER_KM);
+        parent::__construct($this->pricePerKm);
     }
 }
