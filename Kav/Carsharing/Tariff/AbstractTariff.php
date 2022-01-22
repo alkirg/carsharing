@@ -4,9 +4,11 @@ namespace Kav\Carsharing\Tariff;
 abstract class AbstractTariff implements TariffInterface
 {
     const ERR_NEGATIVE = 'Введите число больше 0';
+    const ERR_SERVICE = 'Услуга уже существует';
 
     private int $kilometers;
     private int $minutes;
+    private array $services;
 
     public function __construct(int $kilometers, int $minutes)
     {
@@ -16,6 +18,7 @@ abstract class AbstractTariff implements TariffInterface
         }
         $this->kilometers = $kilometers;
         $this->minutes = $minutes;
+        $this->services = [];
     }
 
     public function countPrice()
@@ -28,6 +31,17 @@ abstract class AbstractTariff implements TariffInterface
 
     public function addService(\Kav\Carsharing\Service\ServiceInterface $service)
     {
+        if (isset($this->services[get_class($service)])) {
+            trigger_error(self::ERR_SERVICE);
+        } else {
+            $this->services[get_class($service)] = $service;
+        }
+
         return $service->countPrice();
+    }
+
+    public function getServices()
+    {
+        return $this->services;
     }
 }
