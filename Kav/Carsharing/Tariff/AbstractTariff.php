@@ -1,5 +1,5 @@
 <?php
-namespace Kav\Carsharing;
+namespace Kav\Carsharing\Tariff;
 
 abstract class AbstractTariff implements TariffInterface
 {
@@ -33,7 +33,7 @@ abstract class AbstractTariff implements TariffInterface
 
     abstract protected function countMinutePrice(int $minutes);
 
-    public function addService(ServiceInterface $service)
+    public function addService(\Kav\Carsharing\Service\ServiceInterface $service)
     {
         if (!$this->minutes) {
             trigger_error(self::ERR_SERVICE, E_USER_ERROR);

@@ -1,5 +1,5 @@
 <?php
-namespace Kav\Carsharing;
+namespace Kav\Carsharing\Service;
 
 interface ServiceInterface
 {
