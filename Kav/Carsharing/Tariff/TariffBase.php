@@ -3,8 +3,8 @@ namespace Kav\Carsharing\Tariff;
 
 class TariffBase extends AbstractTariff
 {
-    private float $pricePerKm = 10;
-    private float $pricePerMinute = 3;
+    protected float $pricePerKm = 10;
+    protected float $pricePerMinute = 3;
 
     protected function countKmPrice(int $kilometers)
     {
