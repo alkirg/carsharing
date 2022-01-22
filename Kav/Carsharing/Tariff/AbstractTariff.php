@@ -3,7 +3,6 @@ namespace Kav\Carsharing\Tariff;
 
 abstract class AbstractTariff implements TariffInterface
 {
-    const ERR_SERVICE = 'Невозможно добавить услугу';
     const ERR_NEGATIVE = 'Введите число больше 0';
 
     private float $pricePerKm;
@@ -31,10 +30,6 @@ abstract class AbstractTariff implements TariffInterface
 
     public function addService(\Kav\Carsharing\Service\ServiceInterface $service)
     {
-        if (!$this->minutes) {
-            trigger_error(self::ERR_SERVICE, E_USER_ERROR);
-            return false;
-        }
         return $service->countPrice();
     }
 }

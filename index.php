@@ -14,6 +14,7 @@ use \Kav\Carsharing\Service;
 $base = new Tariff\TariffBase(5, 60);
 $service = new Service\ServiceDriver();
 echo $base->countPrice() + $base->addService($service) . '<br>';
+echo $base->addService($service) . '<br>';
 $service = new Service\ServiceGps(60);
 echo $base->countPrice() + $base->addService($service) . '<br>';
 //$base = new Tariff\TariffBase(5, -60);
