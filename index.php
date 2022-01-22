@@ -11,17 +11,17 @@ require_once 'Kav/Carsharing/Tariff/TariffStudent.php';
 use \Kav\Carsharing\Tariff;
 use \Kav\Carsharing\Service;
 
-$base = new Tariff\TariffBase();
+$base = new Tariff\TariffBase(5, 60);
 $service = new Service\ServiceDriver();
-echo $base->countPrice(5, 60) + $base->addService($service) . '<br>';
+echo $base->countPrice() + $base->addService($service) . '<br>';
 $service = new Service\ServiceGps(60);
-echo $base->countPrice(5, 60) + $base->addService($service) . '<br>';
-//echo $base->countPrice(5, -60) + $base->addService($service) . '<br>';
+echo $base->countPrice() + $base->addService($service) . '<br>';
+//$base = new Tariff\TariffBase(5, -60);
 
-$hourly = new Tariff\TariffHourly();
+$hourly = new Tariff\TariffHourly(5, 70);
 $service = new Service\ServiceGps(70);
-echo $hourly->countPrice(5, 70) + $hourly->addService($service) . '<br>';
+echo $hourly->countPrice() + $hourly->addService($service) . '<br>';
 
-$student = new Tariff\TariffStudent();
+$student = new Tariff\TariffStudent(5, 60);
 $service = new Service\ServiceGps(60);
-echo $student->countPrice(5, 60) + $student->addService($service) . '<br>';
+echo $student->countPrice() + $student->addService($service) . '<br>';
