@@ -5,17 +5,17 @@ class TariffHourly extends AbstractTariff
 {
     private float $pricePerHour = 200;
 
-    protected function countKmPrice(int $kilometers)
+    protected function countKmPrice()
     {
         return 0;
     }
 
-    protected function countMinutePrice(int $minutes)
+    protected function countMinutePrice()
     {
-        if ($minutes <= 0) {
+        if ($this->minutes <= 0) {
             trigger_error(self::ERR_NEGATIVE, E_USER_ERROR);
             return false;
         }
-        return $this->pricePerHour * ceil($minutes / 60);
+        return $this->pricePerHour * ceil($this->minutes / 60);
     }
 }
